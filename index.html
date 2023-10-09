@@ -80,8 +80,8 @@
       //    * If profile is inactive, profileActivation activates it and deletes the `reason` prop from the object
       //    * In both cases the updated profile object is returned
       // 🧠 Edge cases:
-      //    * If the profile is inactive but its `reason` prop is **missing**, return the string "confirm status manually"
-      //    * If the profile is active but it has a `reason` prop, return the string "confirm status manually"
+      //  XX  * If the profile is inactive but its `reason` prop is **missing**, return the string "confirm status manually"
+      //  XX * If the profile is active but it has a `reason` prop, return the string "confirm status manually"
       // 🌟 HINT: to confirm the existence of a prop, check that its value is not undefined
       // 🌟 HINT: to confirm the existence of a prop, check that its value is not undefined
       function profileActivation(profile, reason) {
@@ -90,29 +90,18 @@
 
       if (profile.active === undefined) {
         return "impossible to ascertain status"
-      }
-
-    
-      for (let props in profile) {
-        //console.log("prop indices -->", props)
-      //console.log("active or inacctive -->", profile.active)
-      //console.log("print reason property string -->", profile.reason)
-     
-     
-      if (profile.active === true) {
-        activeChange = !profile.active 
-        profile.reason = `${reason}`
-        console.log("updated profile if true-->", activeChange)
-      } if (profile.active === false) {
-        activeChange = !profile.active
-        console.log("updated profile if false-->", activeChange)
-      } if (profile.active === false && profile.reason === undefined) {
+      }  if (profile.active === false && profile.reason === undefined) {
         return "confirm status manually"
-      } 
-      if (activeChange === false) {
-        updatedProfile = profile.reason
-        console.log("reason string -->", updatedProfile)
-      }
+      } if (profile.active === true && profile.reason !== undefined) {
+        return "confirm status manually"
+      } if (profile.active === true) {
+        profile.active = false
+        profile.reason = `${reason}`
+        return profile
+      } if (profile.active === false) {
+        profile.active = true
+        delete profile.reason
+        return profile
       }
      return 
     }
