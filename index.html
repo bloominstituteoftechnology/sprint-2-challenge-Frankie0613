@@ -124,12 +124,35 @@
       //    * If mineSweeper is called with such coordinates that the player lands on red, return the string "🟥 💀"
       //    * If the player lands on blue, return the string "🟦 🥳"
       // 🧠 Edge cases:
-      //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
+      //  🥳  * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
     function mineSweeper(grid, x, y) {
+     let result 
+     let xyMine
      if (x < 1 || x > 3 || y < 1 || y > 3) {
       return "invalid coordinates"
-     }
-     return
+     } if (y === 1 && x === 1) {
+      xyMine = grid[0][0]
+     } if (y === 1 && x === 2) {
+      xyMine = grid[0][1]
+     } if (y === 1 && x === 3) {
+      xyMine = grid[0][2]
+     } if (y === 2 && x === 1) {
+      xyMine = grid[1][0]
+     } if (y === 2 && x === 2) {
+      xyMine = grid[1][1] 
+     } if (y === 2 && x === 3) {
+      xyMine = grid[1][2]
+     } if (y === 3 && x === 1) {
+      xyMine = grid[2][0]
+     } if (y === 3 && x === 2) {
+      xyMine = grid[2][1] 
+     } if (y === 3 && x === 3) {
+      xyMine = grid[2][2]
+     } if (xyMine === "🟦") {
+      result = "🟦 🥳"
+     } else {
+      result = "🟥 💀" 
+     } return result
     }
 
     // 👉 CHALLENGE 3
