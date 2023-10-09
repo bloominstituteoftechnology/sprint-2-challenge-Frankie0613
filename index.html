@@ -82,17 +82,39 @@
       // 🧠 Edge cases:
       //    * If the profile is inactive but its `reason` prop is **missing**, return the string "confirm status manually"
       //    * If the profile is active but it has a `reason` prop, return the string "confirm status manually"
-      //    * If the profile is **missing** an `active` prop, return the string "impossible to ascertain status"
       // 🌟 HINT: to confirm the existence of a prop, check that its value is not undefined
-    function profileActivation(profile, reason) {
-      let result = ""
-      for (let prop in profile) {
-        if (profile[prop] === true) {
-          
+      // 🌟 HINT: to confirm the existence of a prop, check that its value is not undefined
+      function profileActivation(profile, reason) {
+      let activeChange 
+      let updatedProfile
 
-        }
+      if (profile.active === undefined) {
+        return "impossible to ascertain status"
       }
+
+    
+      for (let props in profile) {
+        //console.log("prop indices -->", props)
+      //console.log("active or inacctive -->", profile.active)
+      //console.log("print reason property string -->", profile.reason)
      
+     
+      if (profile.active === true) {
+        activeChange = !profile.active 
+        profile.reason = `${reason}`
+        console.log("updated profile if true-->", activeChange)
+      } if (profile.active === false) {
+        activeChange = !profile.active
+        console.log("updated profile if false-->", activeChange)
+      } if (profile.active === false && profile.reason === undefined) {
+        return "confirm status manually"
+      } 
+      if (activeChange === false) {
+        updatedProfile = profile.reason
+        console.log("reason string -->", updatedProfile)
+      }
+      }
+     return 
     }
 
     // 👉 CHALLENGE 2
@@ -145,8 +167,7 @@
     }
 
     // 👉 CHALLENGE 5
-    function normalizePhoneNumber(string) {
-      // 🧠 normalizePhoneNumber takes a string as its only argument, representing a ten-digit number
+       // 🧠 normalizePhoneNumber takes a string as its only argument, representing a ten-digit number
       // The function returns a string formatted as seen below
       // 🧠 Examples of usage:
       // normalizePhoneNumber("9876543210") // returns "(987) 654-3210"
@@ -157,11 +178,17 @@
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
+    function normalizePhoneNumber(string) {
+     let template = [`${string}`]
       for (let i = 0; i < string.length; i++) {
         if (string[i].length !== 10) {
           return "type a 10-digit number"
-        } else if (string[i] < 0 || string[i] > 9) {
-          return "invalid phone number";
+        } 
+        const splitString = string.split('')
+        for (let nums = 0; nums < splitString.length; nums++) {
+          if (typeof splitString[nums] !== "number") {
+            return "invalid phone number"
+          }
         }
       } 
     }
