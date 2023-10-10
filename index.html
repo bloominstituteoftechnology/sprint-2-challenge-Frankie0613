@@ -183,17 +183,9 @@
         } 
       } return boolObject
       }
-
-  
-    
-    
-    
-    
-    
     
 
     // 👉 CHALLENGE 4
-    function scrub() {
       // 🧠 scrub takes a string "text" as its first argument, and an array of forbidden words "forbidden" as its second
       // Any word in the text included in the array of forbidden words is replaced with a word of equal length but made of lowcase "x"
       // The scrubbed text is then returned from the function, as seen in the examples below
@@ -205,7 +197,59 @@
       //    scrub("aces high", ["high", "aces", "hearts"]) // returns "xxxx xxxx"
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
-    }
+    function scrub(text, forbidden) {
+      const textWordsArray = text.split(" ")
+      console.log("textWordsArray-->", textWordsArray)
+      console.log("forbidden array", forbidden)
+      //forbidden array index
+      for (let index = 0; index < forbidden.length; index++) {
+        const forbiddenWords = forbidden[index]
+        console.log("forbiddenWords-->", forbiddenWords)
+        const forbiddenTextIndex = textWordsArray.indexOf(forbiddenWords)
+        console.log("forbiddenTextIndex-->", forbiddenTextIndex) 
+        for (let index2 = 0; index2 < textWordsArray.length; index2++) {
+        let textWords = textWordsArray[index2]
+        console.log("text words-->", textWords)
+        if (textWords === forbiddenWords) {
+          const textChar = textWords.split('')
+          console.log("text chars of forbidden words-->", textChar)
+          // 1. need to change all elems of textChar to 'x'
+          // 2. join the new elems of textChar together to form a string "replacedWord" of one word "xxx"
+          // 3. join all words together to make a sentence string "newText"
+          // 4. return newText
+
+          // for (int index =0; index < test.length; index++){
+            // test[index] = test[index].replace(" ", "%20");
+            //}
+
+          for (let letters = 0; letters < textChar.length; letters++) {
+            
+            if (textChar[letters] === "a" || textChar[letters]=== "b" || textChar[letters] === "c" || textChar[letters] === "d" || textChar[letters] === "e" || textChar[letters] === "f" ||
+            textChar[letters] === "g" || textChar[letters] === "h" || textChar[letters] === "i" || textChar[letters] === "j" || textChar[letters] === "k" || textChar[letters] === "l" ||
+            textChar[letters] === "m" || textChar[letters] === "n" || textChar[letters]=== "o" || textChar[letters] === "p" || textChar[letters] === "q" || textChar[letters] === "r" ||
+            textChar[letters] === "s" || textChar[letters]=== "t" || textChar[letters]=== "u" || textChar[letters] === "v" || textChar[letters] === "w" || textChar[letters] === "x" ||
+            textChar[letters] === "y" || textChar[letters] === "z") {
+              textChar[letters] = textChar[letters].replace( textChar, "x")
+              console.log("letters to x-->", textChar[letters])
+              //let xLettersArray = [textChar[letters]]
+              //console.log("x letters array--->", xLettersArray)
+              //for (let words = 0; words < textWordsArray.length; words++) {
+                //console.log("textWordsArray words --->", textWordsArray[words])
+              //if (textWordsArray[words] === forbiddenWords) {
+                //textWordsArray[words] = textChar[letters]
+                //console.log("x words array--->", textWordsArray[words])
+              //}
+              } 
+            }  
+           
+          }
+        }
+        } 
+        
+        
+      }  
+      
+    
 
     // 👉 CHALLENGE 5
        // 🧠 normalizePhoneNumber takes a string as its only argument, representing a ten-digit number
@@ -220,19 +264,18 @@
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
     function normalizePhoneNumber(string) {
-     let template = [`${string}`]
-      for (let i = 0; i < string.length; i++) {
-        if (string[i].length !== 10) {
-          return "type a 10-digit number"
-        } 
-        const splitString = string.split('')
-        for (let nums = 0; nums < splitString.length; nums++) {
-          if (typeof splitString[nums] !== "number") {
+      if (string.length !== 10) {
+            return "type a 10-digit number"
+           }
+       let splitString = string.split('')
+      for  (let nums = 0; nums < splitString.length; nums++) {
+           if (typeof splitString[nums] !== "number" || splitString[nums] < 0 || splitString[nums] > 9) {
             return "invalid phone number"
-          }
-        }
+           }
+           } 
       } 
-    }
+       
+    
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
