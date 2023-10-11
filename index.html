@@ -229,7 +229,7 @@
             textChar[letters] === "m" || textChar[letters] === "n" || textChar[letters]=== "o" || textChar[letters] === "p" || textChar[letters] === "q" || textChar[letters] === "r" ||
             textChar[letters] === "s" || textChar[letters]=== "t" || textChar[letters]=== "u" || textChar[letters] === "v" || textChar[letters] === "w" || textChar[letters] === "x" ||
             textChar[letters] === "y" || textChar[letters] === "z") {
-              textChar[letters] = textChar[letters].replace( textChar, "x")
+              textChar[letters] = "x"
               console.log("letters to x-->", textChar[letters])
               //let xLettersArray = [textChar[letters]]
               //console.log("x letters array--->", xLettersArray)
@@ -254,8 +254,8 @@
     // 👉 CHALLENGE 5
        // 🧠 normalizePhoneNumber takes a string as its only argument, representing a ten-digit number
       // The function returns a string formatted as seen below
-      // 🧠 Examples of usage:
-      // normalizePhoneNumber("9876543210") // returns "(987) 654-3210"
+      // 🧠 ormalizePhoneNumber("9876543210")Examples of usage:
+      // n // returns "(987) 654-3210"
       // normalizePhoneNumber("1111111111") // returns "(111) 111-1111"
       // 🧠 Edge cases:
       //   * If the argument is of an incorrect length, return the string "type a 10-digit number"
@@ -264,16 +264,62 @@
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
     function normalizePhoneNumber(string) {
+      const template = "(XXX) XXX-XXXX"
+      let templateArray = template.split('');
+      let splitString = string.split('');
+      let newNumber = ''
+      let result = ""
+
       if (string.length !== 10) {
+            result = "type a 10-digit number"
+            return result
+           } if (string.length === 10) {
+             for  (let nums = 0; nums < splitString.length; nums++) {
+          if (typeof splitString[nums] !== "number" || splitString[nums] < 0 || splitString[nums] > 9) {
+            result =  "invalid phone number"
+           }   
+          } 
+         } if (true) {
+            for (let idx = 0; idx < templateArray.length; idx++) {
+          if (templateArray[idx] === "X") {
+          templateArray[idx] = splitString.shift();
+          const changedTempArray = [templateArray[idx]]
+          newNumber = templateArray.join('')
+          result = newNumber
+          } 
+          }  return result 
+        } 
+       
+
+      
+      // this code works for tests 1 thru 3
+         /* for (let idx = 0; idx < templateArray.length; idx++) {
+        if (templateArray[idx] === "X") {
+          templateArray[idx] = splitString.shift();
+          const changedTempArray = [templateArray[idx]]
+          console.log("changed temp array-->", changedTempArray)
+          console.log("third temp array-->", templateArray)
+          newNumber = templateArray.join('')
+          console.log("new number-->", newNumber)
+        } 
+      } return newNumber */ 
+    
+     
+     
+  
+      //this code works for tests 4 thru 10
+     /* if (string.length !== 10) {
             return "type a 10-digit number"
            }
-       let splitString = string.split('')
+       
       for  (let nums = 0; nums < splitString.length; nums++) {
            if (typeof splitString[nums] !== "number" || splitString[nums] < 0 || splitString[nums] > 9) {
             return "invalid phone number"
-           }
-           } 
-      } 
+           } // cant see anything reflected in the console from here down 
+          } */
+          
+          } 
+       
        
     
 
