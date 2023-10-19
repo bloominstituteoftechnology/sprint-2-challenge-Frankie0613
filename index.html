@@ -246,9 +246,9 @@
            }
            for  (let nums = 0; nums < splitString.length; nums++) {
 
-            if (typeof string !== "number" || splitString[nums] < 0 && splitString[nums] > 9) {
+            if (isNaN(splitString[nums]) || splitString[nums] < 0 || splitString[nums] > 9) {
             result = "invalid phone number"
-            //return result
+            return result
            }
            } 
             for (let idx = 0; idx < templateArray.length; idx++) {
@@ -260,44 +260,6 @@
           } 
           } return result 
     }
-       
-       /* if (true) {
-             for  (let nums = 0; nums < splitString.length; nums++) {
-          if (typeof splitString[nums] !== "number" || splitString[nums] < 0 || splitString[nums] > 9) {
-            result =  "invalid phone number"
-           }   
-          } 
-         } */
-      
-      // this code works for tests 1 thru 3
-         /* for (let idx = 0; idx < templateArray.length; idx++) {
-        if (templateArray[idx] === "X") {
-          templateArray[idx] = splitString.shift();
-          const changedTempArray = [templateArray[idx]]
-          console.log("changed temp array-->", changedTempArray)
-          console.log("third temp array-->", templateArray)
-          newNumber = templateArray.join('')
-          console.log("new number-->", newNumber)
-        } 
-      } return newNumber */ 
-    
-     
-     
-  
-      //this code works for tests 4 thru 10
-     /* if (string.length !== 10) {
-            return "type a 10-digit number"
-           }
-       
-      for  (let nums = 0; nums < splitString.length; nums++) {
-           if (typeof splitString[nums] !== "number" || splitString[nums] < 0 || splitString[nums] > 9) {
-            return "invalid phone number"
-           } // cant see anything reflected in the console from here down 
-          } */
-          
-          
-       
-       
     
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
